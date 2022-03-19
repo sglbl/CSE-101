@@ -1,0 +1,22 @@
+R1'e 30 yükle 00
+R1'i Rf e yükle 02
+R2'ye 01 değeri yükle 04
+R0'a 3A değeri yükle 06
+R1 ve R2'yi topla ve R1'e yaz 08
+R1'i Rf'e yükle  0A
+Eğer r1 = r0 ise son adıma geç 0C
+Adım 5'e geç 0e
+Halt
+----------------------------------
+load R1,30h       ;h eklersen decimal yapar.
+move Rf,R1
+load R2,01
+load R0,$3A       ;başına $ eklersen hex yapar.
+addi R1,R1,R2
+move Rf,R1
+jmpEQ R1=R0,10h
+jmp 08
+halt
+----------------------------------
+
+Assembly kelimesinin "montaj" , "çevirme" gibi anlamları vardır yani Assembly basli basina bir dil olmaktan ziyade makina dilinin insanoglu tarafindan daha rahat kullanilabilmesi icin gelistirilmis ara bir dildir. Assembly olmasaydi hexadecimal rakamlarla makina kodu yazmaya calisacaktik. Bunun cok zor olmasindan dolayi hexadecimal makina kodlari insan aklinda daha kolay kalabilecek komutlara donusturulmustur. Bu donusmus komutlarda Assembly'i olusturmustur. Kisaca siz Assembly ile kod yazip bunu bir Assembler ile cevirdiginizde (Derleme degil cevirme) aslinda ceviricinin yaptigi tek sey sizin Assembly kodlariniza karsilik gelen Makina kodlarını tespit edip kodlari makina koduna cevirmektir. Makina koduna cevrilen ifadelerde ilgili cpu ya yuklenip islenmesi saglanir.
